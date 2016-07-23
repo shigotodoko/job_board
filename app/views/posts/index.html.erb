@@ -1,0 +1,58 @@
+<% if @posts.empty? %>
+  <div class='box'>
+    <p class='no-posts-message'>Desculpe, no momento não temos nenhum anúncio publicado para a região de <strong><%= params[:tag].capitalize %></strong>, mas temos outras <%= link_to 'oportunidades!', root_path %></p>
+  </div>
+<% end %>
+
+<ol class='articles-list'>
+  <% @posts.each do |post| %>
+    <li>
+  <article class='article box'>
+    <%= ribbon(post) %>
+    <h1 class='article-title'>
+      <i class='fa fa-star star-color'></i>
+      <%= link_to(post.title, post_url(post), title: post.title) %>
+    </h1>
+
+    <div class='article-body'>
+      <p class='article-location'>
+      <%= post.location %>
+      </p>
+      <p class='article-description'>
+      <%= post.short_description %>
+      </p>
+
+      <ul class='article-social-and-tags'>
+        <li>
+        <%= link_to post_url(post), class: 'facebook-share-button', alt: 'Compartilhar no Facebook' do %>
+          <i class='fa fa-facebook-square fa-2 facebook-color'></i>
+      <% end %>
+        </li>
+        <li>
+        <%= link_to post_url(post), title: "#{post.title} @shigotodoko", class: 'twitter-share-button', target: '_blank', rel: 'external', alt: 'Compartilhar via Twitter' do %>
+          <i class='fa fa-twitter-square fa-2 twitter-color'></i>
+      <% end %>
+        </li>
+        <li>
+        <%= link_to post_url(post), class: 'google-plus-share-button', target: '_blank', rel: 'external', alt: 'Compartilhar no Google+' do %>
+          <i class='fa fa-google-plus-square fa-2 google-plus-color'></i>
+      <% end %>
+        </li>
+      </ul>
+
+      <time class='article-published-date' datetime='<%= post.published_at %>'>
+        <%= time_ago_in_words(post.published_at) %> atrás
+      </time>
+    </div>
+  </article>
+  </li>
+<% end %>
+</ol>
+
+<div class='pagination'>
+  <%= will_paginate(@posts) %>
+</div>
+
+<% content_for(:aside) do %>
+  <%= render 'aside' %>
+<% end %>

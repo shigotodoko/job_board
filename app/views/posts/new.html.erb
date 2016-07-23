@@ -1,0 +1,97 @@
+<% title 'Novo anúncio' %>
+
+<% if @post.errors.any? %>
+  <div class="error_explanation">
+  <h3 class='headline'>Por favor verifique as informações abaixo:</h3>
+  <ul class='square'>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li class='error_field'><%= msg %></li>
+  <% end %>
+  </ul>
+  </div>
+<% end %>
+
+<%= form_for(@post) do |f| %>
+  <div class='box new-post-box'>
+  <h1 class='new-post-title'>Novo Anúncio</h1>
+  <!-- title -->
+  <p class='new-post title'>
+  <label for='post-title'>Título do anúncio</label>
+  <%= f.text_field :title, placeholder: 'Exemplo: Auto-peças' %>
+  </p>
+  <!-- location -->
+  <p class='new-post location'>
+  <label for='post-location'>Local de Trabalho</label>
+  <%= f.text_field :location, placeholder: 'Aichi-ken, Toyohashi-shi' %>
+  </p>
+  <!-- description -->
+  <p class='new-post description'>
+  <label for='post-description'>Descreva o trabalho a ser realizado:</label>
+  <%= f.text_area :description, rows: 10, placeholder: "Máximo 400 caracteres." %>
+  </p>
+  <!-- salary -->
+  <p class='new-post salary'>
+  <label for='post-salary'>Remuneração/hora</label>
+  <%= f.text_field :salary, placeholder: 'Exemplo: 1.200 ienes/hora' %>
+  </p>
+  <!-- shift -->
+  <p class='new-post shift'>
+  <label for='post-shift'>Período/Turno</label>
+  <%= f.text_field :shift, placeholder: 'Exemplo: Diurno ou Noturno' %>
+  </p>
+  <!-- workload -->
+  <p class='new-post workload'>
+  <label for='post-workload'>Horário de Trabalho</label>
+  <%= f.text_field :work_load, placeholder: 'Exemplo: das 08:00 às 17:00' %>
+  </p>
+  <!-- dayoff -->
+  <p class='new-post dayoff'>
+  <label for='post-dayoff'>Dias de Folga</label>
+  <%= f.text_field :day_off, placeholder: 'Sábados e domingos' %>
+  </p>
+  <!-- requisites -->
+  <p class='new-post requirements'>
+  <label for='post-requirements'>Requisitos:</label>
+  <%= f.text_area :requirements, rows: 10, placeholder: "Máximo 400 caracteres." %>
+  </p>
+  <!-- benefits -->
+  <p class='new-post benefits'>
+  <label for='post-benefits'>Benefícios:</label>
+  <%= f.text_area :benefits, rows: 10, placeholder: "Máximo 400 caracteres." %>
+  </p>
+</div>
+
+<div class='box new-post-box'>
+  <h1 class='new-post-title'>Dados do anunciante</h1>
+  <!-- contractor name -->
+  <p class='contractor person-name'>
+  <label for='contractor-person-name'>Nome do responsável pelo anúncio:</label>
+  <%= f.text_field :contractor_person_name %>
+  </p>
+  <!-- company name -->
+  <p class'contractor company-name'>
+  <label for='company-name'>Nome da Empresa anunciante:</label>
+  <%= f.text_field :contractor_company_name %>
+  </p>
+  <!-- company-address -->
+  <p class='contractor company-address'>
+  <label for='company-address'>Endereço da Empresa:</label>
+  <%= f.text_field :contractor_address %>
+  </p>
+  <!-- contact-email -->
+  <p class='contractor company-email'>
+  <label for='company-email'>E-mail da empresa para contato:</label>
+  <%= f.text_field :contractor_mail_address %>
+  </p>
+  <!-- contact-phone -->
+  <p class='contractor company-phone'>
+  <label for='company-phone'>Telefone da empresa para contato:</label>
+  <%= f.text_field :contractor_phone_number %>
+  </p>
+
+  <p class='post-info'>Seu anúncio ficará disponível por no mínimo 30 dias a contar da data de publicação.</p>
+  <p class='post-info'>A publicação ocorre após um período de avaliação de no máximo 7 dias úteis. Caso seu anúncio não seja publicado dentro do período informado favor entrar em contato pelo e-mail shigotodoko@gmail.com</p>
+
+  <%= submit_tag('Enviar', name: 'submit', class: 'send-button', data: { disable_with: 'Enviando...' }) %>
+</div>
+<% end %>

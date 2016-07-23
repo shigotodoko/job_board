@@ -1,0 +1,61 @@
+<% title @post.title %>
+
+<% content_for :meta do %>
+  <meta name="robots" content="noindex">
+  <!-- facebook opengraph -->
+  <meta property="og:locale" content="pt-br">
+  <meta property="og:url" content="<%= request.original_url %>">
+  <meta property="og:title" content="<%= @post.title %>">
+  <meta property="og:site_name" content="Shigotodoko">
+  <meta property="og:description" content="<%= @post.description[0..200] %>">
+  <meta property="og:type" content="website">
+  <meta property="og:app_id" content="143661522361941">
+<% end %>
+
+<article class='article-details box'>
+  <%= ribbon(@post) %>
+  <h1 class='article-title'>
+    <i class='fa fa-star star-color'></i>
+    <%= @post.title %>
+  </h1>
+  <div class='article-body'>
+    <time class='article-pubdate' pubdate datetime='<%= @post.published_at %>'><%= time_ago_in_words(@post.published_at) %> atrás</time>
+    <h2 class='article-location'><%= @post.location %></h2>
+
+    <h3 class='article-subtitle'>Descrição:</h3>
+    <%= simple_format(@post.description, class: 'article-full-description') %>
+
+    <h3 class='article-subtitle'>Requisitos:</h3>
+    <%= simple_format(@post.requirements, class: 'article-requirements') %>
+
+    <h3 class='article-subtitle'>Benefícios:</h3>
+    <%= simple_format(@post.benefits, class: 'article-benefits') %>
+
+    <h3 class='article-subtitle'>Salário:</h3>
+    <p class='article-salary'><%= @post.salary %></p>
+
+    <h3 class='article-subtitle'>Carga horária:</h3>
+    <p class='article-workload'><%= @post.work_load %></p>
+
+    <h3 class='article-subtitle'>Período:</h3>
+    <p class='article-shift'><%= @post.shift %></p>
+
+    <h3 class='article-subtitle'>Folgas:</h3>
+    <p class='article-dayoff'><%= @post.day_off %></p>
+  </div>
+
+  <section class='article-contractor container'>
+    <h3 class='article-subtitle'>Contato:</h3>
+    <h1><%= @post.contractor.name %></h1>
+    <a href="tel:<%= @post.contact_phone %>"><%= @post.contact_phone_and_name %></a>
+    <%= mail_to(@post.contact_email) %>
+  </section>
+</article>
+
+<%= content_for(:aside) do %>
+  <ins class="adsbygoogle"
+        style="display:inline-block;width:300px;height:250px"
+        data-ad-client="ca-pub-1679261120441100"
+        data-ad-slot="8134134810"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<% end %>

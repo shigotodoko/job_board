@@ -1,0 +1,10 @@
+<% title('Página não encontrada') %>
+<% content_for :meta do %>
+<meta name="robots" content="noindex">
+<% end %>
+
+<div class="page_not_found">
+  <h1>Página não encontrada :(</h1>
+  <p>A página solicitada não existe.</p>
+  <%= link_to 'Retornar para a página de anúncios', root_path %>
+</div>

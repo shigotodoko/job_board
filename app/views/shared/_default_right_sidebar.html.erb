@@ -1,0 +1,60 @@
+<script type="text/javascript"><!--
+  google_ad_client = "ca-pub-1679261120441100";
+  /* 300x250 main jobs, right sidebar */
+  google_ad_slot = "7216256845";
+  google_ad_width = 300;
+  google_ad_height = 250;
+  //-->
+</script>
+
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+<br><br>
+
+<div class='panel'>
+  <h5>Redes Sociais</h5>
+  <p>
+    <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fshigotodoko&amp;width=292&amp;height=240&amp;show_faces=true&amp;colorscheme=light&amp;stream=false&amp;show_border=true&amp;header=true&amp;appId=143661522361941" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:190px; background-color: #EEE;" allowTransparency="false"></iframe>
+
+    <a href="http://twitter.com/shigotodoko" class="twitter-follow-button" data-show-count="true" data-lang="pt-BR" data-size="large">Seguir @shigotodoko</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  </p>
+</div>
+
+<div class='panel'>
+  <h5>Feeds</h5>
+  <form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=Shigotodoko', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+    <p>Receba novos anúncios por e-mail</p>
+    <p><input type="text" name="email" placeholder='Digite seu e-mai..'></p>
+    <input type="hidden" value="Shigotodoko" name="uri"/>
+    <input type="hidden" name="loc" value="pt_BR">
+    <input type="submit" value="Assinar" class="success small button">
+  </form>
+</div>
+
+<% if signed_in? && current_user.admin? %>
+  <p><%= link_to 'Sair', destroy_user_session_path, method: :delete %></p>
+  <p><%= link_to 'Novo anúncio', new_post_path, class: 'tiny success button' %></p>
+  <p><%= link_to 'Nova empreiteira', new_contractor_path, class: 'small success button' %></p>
+<% end %>
+
+<div class='provinces-list'>
+  <h5 data-tooltip class='top-bottom has-tip' title='Filtre anúncios por uma região específica através das tags :)'>Tags</h5>
+  <ul class='square side-nav'>
+    <% @tags.each do |tag| %>
+      <li><%= link_to tag.name, posts_tag_filter_path(tag.name) %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class='links'>
+  <ul>
+    <li>© 2013 Shigotodoko</li>
+    <li><a href='/sobre'>Sobre o site</a></li>
+    <li><a href='https://docs.google.com/forms/d/1OVE-B8-VQjrK6VtmCOK39zdmbTYoCfjtvQdiMALaAKg/viewform'>Feedback</a></li>
+  </ul>
+</div>
+
+<%= link_to 'Enviar anúncio grátis', new_post_from_web_path, class: 'tiny success button has-tip top-bottom', title: 'Seu anúncio é grátis por 30 dias!' %>
