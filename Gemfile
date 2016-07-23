@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', github: "rails/rails"
+gem 'rails', '~> 5.0.0'
 
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
@@ -11,6 +11,11 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'acts-as-taggable-on', '~> 4.0.0.pre'
+gem 'devise'
+gem 'font-awesome-sass'
+gem 'jp_prefecture', '~> 0.8.0'
+gem 'draper', '~> 3.0.0.pre1'
+gem 'will_paginate'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -25,9 +30,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  gem 'rspec-rails', '~> 3.4'
-  gem 'rspec-its'
-  gem 'shoulda'
   gem 'capybara'
   gem 'pry', '0.10.1'
   gem 'factory_girl_rails'
