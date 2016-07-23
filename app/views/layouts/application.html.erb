@@ -1,14 +1,110 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>JobBoard</title>
-    <%= csrf_meta_tags %>
+<html lang='pt-br'>
+<head>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="culxN0GN5f_GZnPGAr0AJ1QyJxfKXNRyty9-9fQFtGA" />
+  <%= yield(:meta) %>
+  <title><%= content_for?(:title) ? content_for(:title) : "Empregos no Japão" %></title>
+  <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', async: true %>
+  <%= javascript_include_tag 'selectize', async: true %>
+  <%= auto_discovery_link_tag(:rss, "https://feeds.feedburner.com/ShigotoDoko" )%>
+  <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.0.8/es5-shim.min.js"></script><![endif]-->
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <!-- Google Analytics -->
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-4430385-2']);
+    _gaq.push(['_trackPageview']);
 
-  <body>
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class='container'>
+      <%= link_to(image_tag('logo_top_plano.png', alt: 'logo', title: 'logo'), root_path) %>
+    </div>
+  </header>
+
+  <section class='search-mobile'>
+    <form class='container'>
+      <fieldset>
+        <%= select_tag 'prefecture_filter',
+          options_for_select(Shigotodoko::Prefecture.all)
+        %>
+      </fieldset>
+    </form>
+  </section>
+
+  <%= top_banner if false %>
+
+  <div class='wrapper container'>
+    <main>
     <%= yield %>
-  </body>
+    </main>
+
+    <aside>
+      <%= yield(:aside) %>
+    </aside>
+
+  </div><!-- /wrapper -->
+
+  <div class='ad-320-568 footer align-mobile-ad'>
+    <!-- 320x100 - mobile home footer -->
+    <ins class="adsbygoogle"
+      style="display:inline-block;width:320px;height:100px"
+      data-ad-client="ca-pub-1679261120441100"
+      data-ad-slot="3714599619"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class='ad-from-768 footer align-mobile-ad'>
+    <!-- (new) 728x90 - main/posts/footer -->
+    <ins class="adsbygoogle"
+      style="display:inline-block;width:728px;height:90px"
+      data-ad-client="ca-pub-1679261120441100"
+      data-ad-slot="9871469613"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class='follow-network container'>
+    <span class='title'>Siga o ShigotoDoko nas redes sociais</span>
+    <ul class='social-networks'>
+      <li>
+      <a class='sprite-facebook sprite-social-media' href='https://facebook.com/ShigotoDoko'>Facebook</a>
+      </li>
+      <li>
+      <a class='sprite-twitter sprite-social-media' href='https://twitter.com/shigotodoko'>Twitter</a>
+      </li>
+      <li>
+      <a class='sprite-google-plus sprite-social-media' href='https://plus.google.com/b/111043374287269601303'>Google+</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class='partners-mobile container'>
+    <section class='partners-section box'>
+    <h3>Links Parceiros</h3>
+    <h4>
+      <a href='http://www.japaoemfoco.com/como-receber-o-reembolso-da-aposentadoria-no-brasil?utm_source=shigotodoko' target='_blank'>Saiba como receber o reembolso da aposentadoria no Brasil</a>
+    </h4>
+    </section>
+  </div>
+
+  <footer>
+    <div class='container'>
+      <span class='small'>Copyright © ShigotoDoko <%= Date.today.year %>. All Rights Reserved</span>
+    </div>
+  </footer>
+</body>
 </html>
