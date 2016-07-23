@@ -1,24 +1,7 @@
-# README
+# Job Board
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This will be the official repository of the [ShigotoDoko](https://www.shigotodoko.com) website.
 
-Things you may want to cover:
+ShigotoDoko is a job board platform that help companies in Japan that are looking for foreign labor, in the most cases, brazilian labor.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+It is been online since 2008 and already have more than 1.000 jobs published since then.
