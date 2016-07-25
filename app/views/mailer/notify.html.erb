@@ -1,0 +1,21 @@
+<p>Mensagem enviada da web:</p>
+<hr>
+<p>Enviada por: <%= "#{@contractor_person_name} - #{@contractor_mail}" %>.</p>
+<hr>
+<h2><%= "Título: #{@title}" %></h2>
+<h3><%= "Localização: #{@location}" %></h3>
+<p><%= "Salário: #{@salary}" %></p>
+<p><%= "Turno: #{@shift}" %></p>
+<p><%= "Horario de trabalho: #{@work_load}" %></p>
+<p><%= "Folgas: #{@day_off}" %></p>
+<p><strong>Descrição:</strong></p>
+<%= simple_format @description %>
+<p><strong>Requisitos</strong></p>
+<%= simple_format @requirements %>
+<p><strong>Beneficios</strong></p>
+<%= simple_format @benefits %>
+<hr>
+<p><%= "Empreiteira: #{@contractor_company_name}" %></p>
+<p><%= "Endereço: #{@contractor_address}" %></p>
+<p><%= "E-mail: #{@contractor_mail}" %></p>
+<p><%= "Fone: #{@contractor_phone}" %></p>

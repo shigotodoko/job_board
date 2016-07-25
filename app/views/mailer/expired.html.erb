@@ -1,0 +1,11 @@
+<p>Atenção: O anúncio abaixo foi expirado automaticamente.</p>
+<hr>
+<h1><%= @post.title %></h1>
+<h2><%= @post.location %></h2>
+<hr>
+<p>Anúncio publicado em: <%= l(@post.published_at, format: :short) %>
+<p>Anúncio expirado em: <%= l(@post.expired_at, format: :short) %>
+<hr>
+<p>Empreiteira anunciante: <strong><%= @post.contractor.name %><strong></p>
+<p>Telefone: <strong><%= @post.contractor.phone_number %></strong></p>
+<p>E-mail: <strong><%= @post.contractor.mail_address %></strong></p>
