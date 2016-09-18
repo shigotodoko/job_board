@@ -7,12 +7,13 @@ class Post < ApplicationRecord
 
   validates :title, :location, :description, :salary, :shift, :day_off, :work_load, presence: true
 
-  validates :contractor, presence: true, on: :admin
-
   with_options({on: :web}) do |for_user|
     for_user.validates :contractor_person_name, :contractor_company_name, :contractor_address, :contractor_phone_number, presence: true
-
     for_user.validates :contractor_mail_address, presence: true, format: { with:  /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
+  end
+
+  def save_for_web
+    self.save if self.valid?(:web)
   end
 
   enum status: [:pending, :published, :expired, :cancelled, :archived]
