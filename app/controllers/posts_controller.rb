@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all.paginate(page: params[:page], per_page: 10).decorate
+    @posts = published_posts(params[:page]).decorate
   end
 
   def show
-    @post = Post.find(params[:id]).decorate
+    @post = Post.published.find(params[:id]).decorate
   end
 
   def new
@@ -27,6 +27,10 @@ class PostsController < ApplicationController
   end
 
   protected
+
+  def published_posts(page)
+    Post.published.paginate(page: page, per_page: 10)
+  end
 
   def post_params
     params.require(:post).permit(:title, :description, :location, :salary, :shift, :work_load, :day_off, :requirements,
