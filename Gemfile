@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.0'
+ruby '2.3.1'
 
 gem 'rails', '~> 5.0.0'
 
@@ -38,6 +38,8 @@ group :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'capybara'
   gem 'shoulda-context'
+  gem 'minitest-rails-capybara'
+  gem 'launchy'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
