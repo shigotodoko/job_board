@@ -6,7 +6,10 @@ default: &default
 development:
   <<: *default
   database: job_board_development
+  username: postgres
+  password: 
   port: 5432
+  host: db
 
 test:
   <<: *default
