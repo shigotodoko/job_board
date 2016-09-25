@@ -7,13 +7,17 @@ development:
   <<: *default
   database: job_board_development
   username: postgres
-  password: 
+  password:
   port: 5432
   host: db
 
 test:
   <<: *default
   database: job_board_test
+  username: postgres
+  password:
+  port: 5432
+  host: db
 
 production:
   <<: *default

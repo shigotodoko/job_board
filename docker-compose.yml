@@ -11,3 +11,10 @@ services:
       - "3000:3000"
     depends_on:
       - db
+  test:
+    build: .
+    command: bundle exec rails test
+    volumes:
+      - .:/job_board
+    depends_on:
+      - db
