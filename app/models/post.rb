@@ -3,9 +3,11 @@ class Post < ApplicationRecord
   has_one :contactable
   has_one :contact, through: :contactable
 
+  validates :title, :location, :description, :salary, :shift, :day_off, :work_load, presence: true
+
   attr_accessor :contractor_company_name, :contractor_person_name, :contractor_phone_number, :contractor_mail_address, :contractor_address
 
-  validates :title, :location, :description, :salary, :shift, :day_off, :work_load, presence: true
+  scope :published, -> { where(published: true) }
 
   with_options({on: :web}) do |for_user|
     for_user.validates :contractor_person_name, :contractor_company_name, :contractor_address, :contractor_phone_number, presence: true

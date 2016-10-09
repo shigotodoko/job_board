@@ -22,7 +22,7 @@ class PostDecorator < Draper::Decorator
   end
 
   def recent_published?
-    object.published_at > 1.week.ago
+    object.published_at && object.published_at > 1.week.ago
   end
 
   private

@@ -11,5 +11,14 @@ FactoryGirl.define do
     trait :with_contractor do
       association :contractor, factory: :contractor
     end
+
+    trait :published do
+      status :published
+      published_at '10/02/2016'.to_d
+    end
+
+    trait :pending do
+      status :pending
+    end
   end
 end
