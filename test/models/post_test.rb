@@ -116,4 +116,24 @@ class PostTest < ActiveSupport::TestCase
     assert_includes post.tag_list, 'aichi-ken'
     assert_not_includes post.tag_list, 'shizuoka-ken'
   end
+
+  test 'returns false when tries to save_for_web and contract_person_name is not filled' do
+    post = build(:post).tap do |p|
+      p.contractor_person_name = nil
+    end
+
+    refute post.save_for_web
+  end
+
+  test 'returns true when all contractor fields are filled' do
+    post = build(:post).tap do |p|
+      p.contractor_person_name = 'akira'
+      p.contractor_company_name = 'shigotodoko'
+      p.contractor_address = 'aichi-ken'
+      p.contractor_phone_number = '123456'
+      p.contractor_mail_address = 'test@mail.jp'
+    end
+
+    assert true, post.save_for_web
+  end
 end

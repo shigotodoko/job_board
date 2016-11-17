@@ -17,14 +17,15 @@ class Mailer < ApplicationMailer
     @contractor_mail = params[:contractor_mail_address]
     @contractor_phone = params[:contractor_phone_number]
 
-    mail(to: 'klebershimabuku@gmail.com', subject: 'mensagem via web')
+    mail(to: ADMIN, subject: '[Shigotodoko] Mensagem via web')
   end
 
   def expired(post)
     @post = post
     @post.contractor = post.contractor
 
-    mail(to: 'klebershimabuku@gmail.com',
-         subject: "[Shigotodoko] Anúncio expirado automaticamente - #{@post.title}")
+    subject = "[Shigotodoko] Anúncio expirado - #{@post.title}"
+
+    mail(to: ADMIN, subject: subject)
   end
 end

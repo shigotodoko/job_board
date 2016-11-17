@@ -15,7 +15,8 @@ class Post < ApplicationRecord
   end
 
   def save_for_web
-    self.save if self.valid?(:web)
+    return unless valid?(context: :web)
+    save(context: :web)
   end
 
   enum status: [:pending, :published, :expired, :cancelled, :archived]
